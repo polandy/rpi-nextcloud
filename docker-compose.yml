@@ -1,0 +1,42 @@
+version: '2'
+
+volumes:
+  nextcloud-volume:
+  apps-volume:
+  config-volume:
+  data-volume:
+  postgres-db:
+
+services:
+  db:
+    image: postgres:alpine
+    restart: always
+    volumes:
+      - postgres-db:/var/lib/mysql
+    env_file:
+      - db.env
+    networks:
+      - nextcloud-network
+  app:
+    image: nextcloud:12
+    restart: always
+    ports:
+      - 8080:80
+    links:
+      - db
+    volumes:
+      - nextcloud-volume:/var/www/html
+      - apps-volume:/var/www/html/custom_apps
+      - config-volume:/var/www/html/config
+      - data-volume:/var/www/html/data
+    environment:
+      - POSTGRES_HOST=db
+    env_file:
+      - db.env
+    depends_on:
+      - db
+    networks:
+      - nextcloud-network
+networks:
+    nextcloud-network:
+        driver: bridge
