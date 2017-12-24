@@ -1,7 +1,7 @@
 # Nextcloud
 
 Run [Nextcloud](https://nextcloud.com/) with a PostgreSQL DB on your Raspberry Pi 3 using docker.
-For more information about the config via environment variables etc. see the official [documentation](https://github.com/nextcloud/docker). 
+This config runs out of the box. For more information about the config via environment variables, configurable volumes etc. see the official [documentation on Docker Hub](https://hub.docker.com/_/nextcloud/).
 
 ## Requirements
 * [Install docker](https://www.raspberrypi.org/blog/docker-comes-to-raspberry-pi/)
