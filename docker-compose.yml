@@ -12,7 +12,7 @@ services:
     image: postgres:alpine
     restart: always
     volumes:
-      - postgres-db:/var/lib/mysql
+      - postgres-db:/var/lib/postgresql/data
     env_file:
       - db.env
     networks:
